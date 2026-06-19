@@ -1381,6 +1381,7 @@ Aku mencintaimu — dulu, sekarang, dan saat kita bertemu nanti.`,
         { icon: "❤️", wish: "Bersama Selamanya", detail: "Menebus semua waktu yang hilang dengan menghabiskan sisa hidup bersama." }
       ]
     };
+    
 
     // ═══════════════════════════════════════════════════════
     //  LOADING SCREEN PARTICLES
@@ -1470,8 +1471,13 @@ Aku mencintaimu — dulu, sekarang, dan saat kita bertemu nanti.`,
       camera.position.set(0, 1.7, 8);
       camera.lookAt(0, 1.7, 0);
 
-      renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('main-canvas'), antialias: true, alpha: false });
-      renderer.setPixelRatio(isMobile ? 1.0 : Math.min(devicePixelRatio, 1.5));
+      renderer = new THREE.WebGLRenderer({ 
+        canvas: document.getElementById('main-canvas'), 
+        antialias: !isMobile, 
+        alpha: false,
+        powerPreference: "high-performance"
+      });
+      renderer.setPixelRatio(isMobile ? 0.8 : Math.min(devicePixelRatio, 1.5));
       renderer.setSize(innerWidth, innerHeight);
       renderer.shadowMap.enabled = !isMobile;
       if (!isMobile) renderer.shadowMap.type = THREE.PCFSoftShadowMap;
